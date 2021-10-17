@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Item</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+<div id="app" class="container">
+    <h3>Car Item</h3>
+    <form action="" id="firebase">
+        <div class="justify-content-md-left">
+            <p>
+                <input name="capacity" id="capacity" type="text" placeholder="Capacity">
+            </p>
+            <p>
+                <input name="consumables" id="consumables" type="text" placeholder="Consumables">
+            </p>
+            <p>
+                <input name="cost" id="cost" type="text" placeholder="Cost">
+            </p>
+        </div>
+        <div class="justify-content-md-left">
+            <p>
+                <input name="crew" type="text" placeholder="Crew">
+            </p>
+            <p>
+                <input name="length" type="text" placeholder="Length">
+            </p>
+            <p>
+                <input name="manufactor" type="text" placeholder="Manufactor">
+            </p>
+        </div>
+        <div class="justify-content-md-center">
+            <p>
+                <input name="max_speed" type="text" placeholder="Max Speed">
+            </p>
+            <p>
+                <input name="model" type="text" placeholder="Model"></p>
+            <p>
+                <input name="name" type="text" placeholder="Name">
+            </p>
+            <p>
+                <input name="passengers" type="text" placeholder="Passengers">
+            </p>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br>
+    <p>Последние обновленные данные:</p>
+    <ul id="list"></ul>
+    <pre id="object"></pre>
+</div>
+
+<!-- The core Firebase JS SDK is always required and must be listed first-->
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
+
+<script>
+  (function () {
+
+    const firebaseConfig = {
+      apiKey: 'AIzaSyBXeErLzunn6KIh-wHGD5vC9OYpt9U08yo',
+      authDomain: 'js-camp-43b98.firebaseapp.com',
+      databaseURL: 'https://js-camp-43b98-default-rtdb.firebaseio.com',
+      projectId: 'js-camp-43b98',
+      storageBucket: 'js-camp-43b98.appspot.com',
+      messagingSenderId: '258393788704',
+      appId: '1:258393788704:web:e36133dbc863165fbfc745',
+      measurementId: 'G-3Z3X8J0SN7',
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  }());
+
+  const preObject = document.querySelector('#object');
+  const ulList = document.querySelector('#list');
+
+  const dbRefObject = firebase.database().ref('swapi/transport')
+    .limitToLast(1);
+
+  dbRefObject.on('child_added', snap => {
+    const li = document.createElement('li');
+    li.innerText = JSON.stringify(snap.val().fields);
+    ulList.appendChild(li);
+  });
+
+</script>
+
+<script>
+  const form = document.forms.firebase;
+  form.onsubmit = e => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const dataToSend = Object.fromEntries(data.entries());
+
+
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () => {
+      if (xhr.status === 200) {
+        console.log('OK!');
+      } else if (xhr.status > 200) {
+        console.warn(xhr.status);
+      }
+    };
+    xhr.open('POST', 'https://js-camp-43b98-default-rtdb.firebaseio.com/swapi/transport.json/');
+    xhr.send(JSON.stringify({
+        fields: dataToSend,
+        model: 'resources.transport',
+      }),
+    );
+  };
+</script>
+</body>
+</html>

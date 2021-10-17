@@ -1,0 +1,22 @@
+{
+  "name": "stanislav-elshaidt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint -c .eslintrc.js src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.saritasa.com:saritasa/js/jscamp/2021/stanislav-elshaidt.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsdoc": "^31.0.8",
+    "eslint-plugin-prefer-arrow": "^1.2.2"
+  }
+}

@@ -1,0 +1,38 @@
+.table th {
+    cursor: pointer;
+}
+
+.table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.paginator > small > .active {
+    text-decoration: underline;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.modal input {
+    width: 100%;
+}
+
+.modal-dialog {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: fit-content;
+    margin: auto;
+}
+
+.fade:not(.show) {
+    opacity: 1;
+}

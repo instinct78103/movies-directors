@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Films</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <h3 class="mt-5 mb-5">Films</h3>
+    <table id="table" class="table"></table>
+    <div class="paginator"></div>
+    <div class="modal fade" id="exampleModal" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Record</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="addFilm">
+                    <div class="modal-body">
+                        <p>
+                            <label for="episode_id">Episode_id</label>
+                            <input class="form-control" name="episode_id" id="episode_id" type="number" min="0">
+                        </p>
+                        <p>
+                            <label for="director">Director</label>
+                            <input class="form-control" name="director" id="director" type="text">
+                        </p>
+                        <p>
+                            <label for="title">Title</label>
+                            <input class="form-control" name="title" id="title" type="text">
+                        </p>
+                        <p>
+                            <label for="producer">Producer</label>
+                            <input class="form-control" name="producer" id="producer" type="text">
+                        </p>
+                        <p>
+                            <label for="opening_crawl">Opening Crawl</label>
+                            <textarea class="form-control" rows="5" name="opening_crawl" id="opening_crawl"></textarea>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="save_changes" type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./script/table.js"></script>
+</body>
+</html>
